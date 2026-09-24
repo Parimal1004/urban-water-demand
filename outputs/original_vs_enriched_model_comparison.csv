@@ -1,0 +1,5 @@
+"Model","MAE","RMSE","R2","Dataset"
+"Original Linear Regression",0.503588,0.881922,0.871987,"Original SOWEKI features"
+"Original Random Forest",0.497095,0.861863,0.877744,"Original SOWEKI features"
+"Enriched Linear Regression",0.100721244645659,0.183355650584094,0.90570410096125,"Enriched contextual features"
+"Enriched Random Forest",0.0994493229035053,0.180692748500158,0.908423159338157,"Enriched contextual features"

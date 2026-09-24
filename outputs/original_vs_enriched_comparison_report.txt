@@ -1,0 +1,47 @@
+============================================
+ORIGINAL vs ENRICHED MODEL COMPARISON
+Urban Water Demand Prediction
+============================================
+
+ORIGINAL MODEL RESULTS
+--------------------------------------------
+Original Linear Regression MAE: 0.503588
+Original Linear Regression RMSE: 0.881922
+Original Linear Regression R2: 0.871987
+
+Original Random Forest MAE: 0.497095
+Original Random Forest RMSE: 0.861863
+Original Random Forest R2: 0.877744
+
+ENRICHED MODEL RESULTS
+--------------------------------------------
+Enriched Linear Regression MAE: 0.100721
+Enriched Linear Regression RMSE: 0.183356
+Enriched Linear Regression R2: 0.905704
+
+Enriched Random Forest MAE: 0.099449
+Enriched Random Forest RMSE: 0.180693
+Enriched Random Forest R2: 0.908423
+
+IMPROVEMENT
+--------------------------------------------
+Linear Regression MAE improvement (%): 80.00
+Linear Regression RMSE improvement (%): 79.21
+Linear Regression R2 change (%): 3.87
+
+Random Forest MAE improvement (%): 79.99
+Random Forest RMSE improvement (%): 79.03
+Random Forest R2 change (%): 3.50
+
+IMPORTANT NOTES
+--------------------------------------------
+Original results come from the original SOWEKI-based model.
+Enriched results use the enriched contextual feature dataset.
+The enriched Random Forest uses locality-stratified
+training sampling and 50 trees.
+The full enriched test set was retained for evaluation.
+Synthetic contextual variables are experimental features
+and should be disclosed in the final report.
+Original SOWEKI data was not modified.
+
+============================================

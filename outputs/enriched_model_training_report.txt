@@ -1,0 +1,38 @@
+============================================
+ENRICHED MODEL TRAINING REPORT
+Urban Water Demand Prediction
+============================================
+
+Training rows: 277345
+Testing rows: 70180
+RF training rows: 50000
+Number of predictors: 47
+Random Forest trees: 50
+RF trees per batch: 5
+RF training time (seconds): 1066.78
+
+--------------------------------------------
+LINEAR REGRESSION
+--------------------------------------------
+MAE: 0.100721
+RMSE: 0.183356
+R2: 0.905704
+
+--------------------------------------------
+RANDOM FOREST
+--------------------------------------------
+MAE: 0.099449
+RMSE: 0.180693
+R2: 0.908423
+
+--------------------------------------------
+TRAINING DESIGN
+--------------------------------------------
+Random Forest used locality-stratified sampling.
+Maximum samples per locality: 10000
+The full test set was retained for evaluation.
+Original SOWEKI dataset was not modified.
+No target-derived reference columns were used
+as model predictors.
+
+============================================

@@ -1,0 +1,61 @@
+============================================================
+PHASE 2 — ENRICHED FEATURE ENGINEERING REPORT
+============================================================
+
+Input rows: 350885
+Input columns: 54
+Number of localities: 5
+Localities: Zone_A, Zone_B, Zone_C, Zone_D, Zone_E
+
+Historical demand features:
+  lag_1
+  lag_4
+  lag_96
+  lag_672
+  rolling_mean_4
+  rolling_mean_96
+  rolling_mean_672
+  rolling_sd_96
+  rolling_sd_672
+
+Cyclical time features:
+  hour_sin / hour_cos
+  dow_sin / dow_cos
+  month_sin / month_cos
+
+Weather-derived features:
+  temperature_humidity_index
+  heavy_rain_event
+  high_wind_event
+  high_temperature_event
+
+Infrastructure-derived features:
+  storage_per_1000_people
+  supply_efficiency_index
+  infrastructure_stress
+
+Leakage protection:
+  water_demand is the prediction target.
+  total_water_demand_reference is excluded from predictors.
+  synthetic_demand_share is excluded from predictors.
+  demand_per_1000_people is descriptive only and excluded from predictors.
+  Historical features use previous observations only.
+
+Complete rows across model features: 347525
+Usable percentage: 99.04%
+
+Rows with invalid land-use totals: 0
+
+Validation:
+  Required columns: PASSED
+  Leakage audit: PASSED
+  Lag validation: PASSED
+
+Synthetic data disclosure:
+  Locality, demographic, infrastructure and weather/context variables
+  originate from the Phase 1 synthetic experimental context layer.
+  They are not presented as measured real-world locality/weather records.
+
+Original SOWEKI source data was not modified.
+
+============================================================

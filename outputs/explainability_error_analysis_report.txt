@@ -1,0 +1,35 @@
+============================================
+PHASE 6 - EXPLAINABILITY + ERROR ANALYSIS
+Urban Water Demand Prediction
+============================================
+
+OVERALL MODEL PERFORMANCE
+--------------------------------------------
+Linear Regression MAE: 0.100721
+Linear Regression RMSE: 0.183356
+Linear Regression R2: 0.905704
+
+Random Forest MAE: 0.099449
+Random Forest RMSE: 0.180693
+Random Forest R2: 0.908423
+
+FEATURE IMPORTANCE
+--------------------------------------------
+Feature importance file: top_15_feature_importance.csv
+
+ERROR ANALYSIS
+--------------------------------------------
+Prediction rows analyzed: 70180
+Mean Linear Regression residual: 0.002618
+Mean Random Forest residual: -0.011058
+
+OUTPUT FILES
+--------------------------------------------
+enriched_error_metrics.csv
+residual_summary.csv
+top_15_feature_importance.csv
+largest_random_forest_errors.csv
+enriched_predictions_with_errors.csv
+locality_error_metrics.csv
+
+============================================

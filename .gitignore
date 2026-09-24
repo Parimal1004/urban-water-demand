@@ -1,0 +1,37 @@
+# R / RStudio
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# R package/library folders
+renv/
+packrat/
+
+# IDE
+.vscode/
+.idea/
+
+# Large research/training datasets
+data/enriched_features.csv
+data/enriched_train.csv
+data/enriched_test.csv
+
+# Large/generated prediction outputs
+outputs/enriched_predictions_with_errors.csv
+outputs/enriched_test_predictions.csv
+
+# Backup / temporary project folders
+urban-water-demand-old/
+urban-water-demand-backup/
+urban-water-demand-final/

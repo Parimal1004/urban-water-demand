@@ -1,0 +1,70 @@
+============================================
+PHASE 7 - LOCALITY COMPARISON REPORT
+Urban Water Demand Prediction
+============================================
+
+Number of localities: 5
+
+LOCALITY SUMMARY
+--------------------------------------------
+Locality: Zone_A
+Zone type: Residential
+Population: 72000
+Population density: 6857.14
+Mean demand: 0.9741
+Maximum demand: 11.8216
+Random Forest MAE: 0.108619
+Random Forest RMSE: 0.190694
+Random Forest R2: 0.878515
+
+Locality: Zone_B
+Zone type: Commercial
+Population: 48000
+Population density: 6153.85
+Mean demand: 0.7021
+Maximum demand: 7.3558
+Random Forest MAE: 0.078458
+Random Forest RMSE: 0.141312
+Random Forest R2: 0.871829
+
+Locality: Zone_C
+Zone type: Mixed
+Population: 96000
+Population density: 7272.73
+Mean demand: 1.3527
+Maximum demand: 17.5517
+Random Forest MAE: 0.153833
+Random Forest RMSE: 0.260764
+Random Forest R2: 0.881833
+
+Locality: Zone_D
+Zone type: Industrial
+Population: 39000
+Population density: 2363.64
+Mean demand: 0.5681
+Maximum demand: 5.6969
+Random Forest MAE: 0.065082
+Random Forest RMSE: 0.119164
+Random Forest R2: 0.860745
+
+Locality: Zone_E
+Zone type: Residential
+Population: 61000
+Population density: 6489.36
+Mean demand: 0.8253
+Maximum demand: 10.0155
+Random Forest MAE: 0.091254
+Random Forest RMSE: 0.157221
+Random Forest R2: 0.884953
+
+IMPORTANT NOTE
+--------------------------------------------
+Locality attributes and weather/context values
+are synthetic experimental variables generated
+for the enriched modelling framework.
+They should be explicitly disclosed as synthetic
+in the final project report.
+This analysis is descriptive and comparative;
+it does not establish causal relationships.
+
+============================================

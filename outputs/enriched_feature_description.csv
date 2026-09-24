@@ -1,0 +1,26 @@
+"feature","category","description","leakage_safe"
+"lag_1","Historical demand","Previous locality demand observation.",TRUE
+"lag_4","Historical demand","Demand four observations earlier.",TRUE
+"lag_96","Historical demand","Demand 96 observations earlier (approximately 24 hours for 15-minute data).",TRUE
+"lag_672","Historical demand","Demand 672 observations earlier (approximately 7 days for 15-minute data).",TRUE
+"rolling_mean_4","Historical demand","Mean of the previous 4 locality demand observations.",TRUE
+"rolling_mean_96","Historical demand","Mean of the previous 96 locality demand observations.",TRUE
+"rolling_mean_672","Historical demand","Mean of the previous 672 locality demand observations.",TRUE
+"rolling_sd_96","Historical demand","Standard deviation of the previous 96 locality demand observations.",TRUE
+"rolling_sd_672","Historical demand","Standard deviation of the previous 672 locality demand observations.",TRUE
+"hour_sin","Cyclical time","Sine encoding of hour of day.",TRUE
+"hour_cos","Cyclical time","Cosine encoding of hour of day.",TRUE
+"dow_sin","Cyclical time","Sine encoding of day of week.",TRUE
+"dow_cos","Cyclical time","Cosine encoding of day of week.",TRUE
+"month_sin","Cyclical time","Sine encoding of month.",TRUE
+"month_cos","Cyclical time","Cosine encoding of month.",TRUE
+"temperature_humidity_index","Weather derived","Temperature-humidity interaction.",TRUE
+"heavy_rain_event","Weather derived","Indicator for rainfall of at least 5 mm.",TRUE
+"high_wind_event","Weather derived","Indicator for wind speed of at least 20 km/h.",TRUE
+"high_temperature_event","Weather derived","Indicator for temperature of at least 35 degrees Celsius.",TRUE
+"storage_per_1000_people","Infrastructure derived","Storage capacity relative to population.",TRUE
+"supply_efficiency_index","Infrastructure derived","Water supply hours multiplied by distribution efficiency.",TRUE
+"infrastructure_stress","Infrastructure derived","Pipeline age multiplied by infrastructure inefficiency.",TRUE
+"land_use_total_pct","Land use","Check of residential + commercial + industrial percentages.",TRUE
+"dominant_land_use","Land use","Largest land-use category.",TRUE
+"demand_per_1000_people","Descriptive only","Current demand per 1,000 people. NOT a model predictor because it uses the target.",FALSE

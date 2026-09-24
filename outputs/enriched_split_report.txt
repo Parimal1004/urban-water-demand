@@ -1,0 +1,34 @@
+============================================================
+PHASE 3 — ENRICHED TRAIN / TEST SPLIT REPORT
+============================================================
+
+Source rows: 350885
+Source columns: 52
+
+Number of localities: 5
+Localities: Zone_A, Zone_B, Zone_C, Zone_D, Zone_E
+
+Split strategy:
+Chronological 80/20 split performed separately for each locality.
+No random shuffling was used.
+
+Training rows: 277345
+Testing rows: 70180
+Training percentage: 79.81 %
+Testing percentage: 20.19 %
+
+Model features: 48
+
+Data quality: PASSED
+Leakage audit: PASSED
+Chronological split: PASSED
+Train/test overlap: NONE
+Target completeness: PASSED
+Final leakage check: PASSED
+
+Excluded leakage columns:
+water_demand, total_water_demand_reference, synthetic_demand_share, demand_per_1000_people
+
+Original SOWEKI dataset: UNCHANGED
+
+============================================================

@@ -1,0 +1,32 @@
+============================================
+PHASE 8 - WHAT-IF ANALYSIS REPORT
+Urban Water Demand Prediction
+============================================
+
+Model used:
+Enriched Random Forest
+
+SCENARIOS TESTED
+--------------------------------------------
+Higher Temperature: +5 C
+Heavy Rainfall: +20 mm rainfall and +5% humidity
+Reduced Supply: -3 hours
+Improved Efficiency: +5 percentage points
+Older Pipeline: -5 percentage points efficiency
+
+INTERPRETATION NOTE
+--------------------------------------------
+These are model-based scenario predictions,
+not causal estimates.
+
+The contextual variables in the enriched
+dataset are synthetic experimental features.
+
+OUTPUT FILES
+--------------------------------------------
+what_if_baseline_predictions.csv
+what_if_scenario_results.csv
+what_if_scenario_summary.csv
+what_if_analysis_report.txt
+
+============================================
