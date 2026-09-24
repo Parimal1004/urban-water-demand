@@ -22,7 +22,7 @@ Urban water demand varies with time, weather, population, infrastructure, holida
 
 
 ### Live Demo
-[https://urban-water-demand.onrender.com/](url)
+[https://urban-water-demand.onrender.com](url)
 
 ---
 
