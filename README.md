@@ -20,6 +20,10 @@ Urban water demand varies with time, weather, population, infrastructure, holida
 * 📋 Prediction-based reporting
 * 🌐 Interactive R Shiny dashboard
 
+
+### Live Demo
+[https://urban-water-demand.onrender.com/](url)
+
 ---
 
 ## 🖥️ AquaSense Dashboard
