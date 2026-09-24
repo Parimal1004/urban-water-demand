@@ -21,10 +21,14 @@ Urban water demand varies with time, weather, population, infrastructure, holida
 * 🌐 Interactive R Shiny dashboard
 
 
-### Live Demo
-[https://urban-water-demand.onrender.com](url)
-
 ---
+## 🚀 Live Demo
+
+**AquaSense is deployed and publicly accessible on Render.**
+
+🔗 **Live Dashboard:** https://urban-water-demand.onrender.com/
+
+Deployment platform: Render
 
 ## 🖥️ AquaSense Dashboard
 
