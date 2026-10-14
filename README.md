@@ -1,479 +1,108 @@
-# 💧 AquaSense — Explainable Urban Water Demand Forecasting & Decision-Support System
+# AquaSense: Explainable Urban Water Demand Forecasting
 
-**AquaSense** is an explainable machine-learning based urban water demand forecasting and decision-support system developed using **R, Random Forest, and Shiny**.
+AquaSense is a machine-learning system that forecasts urban water demand and presents the results in an interactive dashboard. It is built in R using Random Forest and Shiny.
 
-The system forecasts water demand using historical demand patterns, temporal features, weather conditions, infrastructure characteristics, and locality-level contextual features through an interactive dashboard.
+Live dashboard: https://urban-water-demand.onrender.com/
 
-## 🚀 Project Overview
+## Overview
 
-Urban water demand varies with time, weather, population, infrastructure, holidays, and other contextual factors. AquaSense combines these factors into a machine-learning forecasting pipeline and presents the results through an interactive web dashboard.
+Water demand changes with time of day, weather, population, infrastructure, and holidays. AquaSense brings these factors together in one forecasting pipeline and lets users explore predictions, compare zones, and test what-if scenarios.
 
-### Key capabilities
+## Dashboard Modules
 
-* 📈 Water demand forecasting
-* 🤖 Random Forest-based prediction
-* 🔍 Explainability and feature analysis
-* 📊 Historical demand insights
-* 🌦️ Weather and environmental context
-* 🏙️ Locality/zone comparison
-* 🧪 What-if scenario analysis
-* 📋 Prediction-based reporting
-* 🌐 Interactive R Shiny dashboard
+- **Forecast Demand:** Choose a zone and enter conditions such as date and time, weather, supply hours, storage capacity, pipeline age, and recent demand values. The app returns a predicted demand in m³/h.
+- **Demand Insights:** Historical demand patterns across zones.
+- **What-If Analysis:** Change weather or operational inputs and see how the forecast responds.
+- **Zone Comparison:** Compare demand behaviour and model metrics for two zones.
+- **Prediction History:** Predictions made during the current session.
+- **My Report:** A summary of the selected inputs and the resulting forecast.
 
+## Approach
 
----
-## 🚀 Live Demo
+1. Clean and understand the raw SOWEKI water-demand data.
+2. Engineer features: time, weather, infrastructure, locality context, lag values, and rolling statistics.
+3. Split the data into training and test sets.
+4. Train Linear Regression and Random Forest models and compare them.
+5. Analyse errors and feature importance.
+6. Serve the chosen model through a Shiny dashboard.
 
-**AquaSense is deployed and publicly accessible on Render.**
+Hour, day of week, and month are encoded cyclically so the model can recognise repeating patterns. Lag features (`lag_1`, `lag_4`, `lag_96`, `lag_672`) capture demand at earlier time steps.
 
-🔗 **Live Dashboard:** https://urban-water-demand.onrender.com/
-
-Deployment platform: Render
-
-## 🖥️ AquaSense Dashboard
-
-The application provides several interactive modules:
-
-### 1. Forecast Demand
-
-Users can select a locality and provide prediction conditions such as:
-
-* Prediction date and time
-* Temperature
-* Humidity
-* Rainfall
-* Wind speed
-* Water supply hours
-* Storage capacity
-* Pipeline age
-* Distribution efficiency
-* Holiday/weekend/festival conditions
-* Historical demand lag values
-
-The system generates a predicted water demand value in **m³/h**.
-
-### 2. Demand Insights
-
-Provides historical demand analysis and visualizations to understand demand patterns across the available zones.
-
-### 3. What-If Analysis
-
-Allows users to modify important environmental and operational conditions and examine how the predicted demand changes under different scenarios.
-
-### 4. Zone Comparison
-
-Compares demand characteristics and model-related metrics between two selected urban zones.
-
-### 5. Prediction History
-
-Provides access to previous prediction results generated during the dashboard session.
-
-### 6. My Report
-
-Generates a user-specific summary based on the selected prediction inputs and resulting forecast.
-
----
-
-## 🧠 Machine Learning Pipeline
-
-The project follows a complete data-science workflow:
-
-```text
-Raw SOWEKI Data
-       ↓
-Data Understanding
-       ↓
-Feature Engineering
-       ↓
-Contextual Feature Generation
-       ↓
-Time-Series Feature Engineering
-       ↓
-Train/Test Split
-       ↓
-Linear Regression + Random Forest
-       ↓
-Model Evaluation
-       ↓
-Explainability & Error Analysis
-       ↓
-What-If Analysis
-       ↓
-AquaSense Shiny Dashboard
-```
-
----
-
-## 📊 Feature Engineering
-
-The enriched dataset contains temporal, environmental, infrastructure, demographic, and lag-based features.
-
-Important feature groups include:
-
-### Temporal Features
-
-* Hour
-* Minute
-* Day of week
-* Month
-* Year
-* Weekend indicator
-* Holiday indicator
-* Festival period
-
-### Historical Demand Features
-
-* `lag_1`
-* `lag_4`
-* `lag_96`
-* `lag_672`
-* Rolling mean features
-* Rolling standard deviation features
-
-The lag values represent historical demand observations at different time intervals.
-
-### Weather Features
-
-* Temperature
-* Humidity
-* Rainfall
-* Wind speed
-* Rain-event indicator
-* Heavy-rain indicator
-* High-wind indicator
-* High-temperature indicator
-
-### Infrastructure Features
-
-* Storage capacity
-* Pipeline age
-* Distribution efficiency
-* Water supply hours
-* Infrastructure stress
-* Supply efficiency index
-
-### Locality Features
-
-* Population
-* Population density
-* Area
-* Residential percentage
-* Commercial percentage
-* Industrial percentage
-* Land-use information
-
-### Cyclical Features
-
-The project also uses cyclical transformations for:
-
-* Hour
-* Day of week
-* Month
-
-These help represent the repeating nature of temporal patterns.
-
----
-
-## 🤖 Model Performance
-
-Two regression approaches were evaluated on the enriched feature set.
+## Results
 
 | Model             |    MAE |   RMSE |     R² |
 | ----------------- | -----: | -----: | -----: |
 | Linear Regression | 0.1007 | 0.1834 | 0.9057 |
 | Random Forest     | 0.0994 | 0.1807 | 0.9084 |
 
-The Random Forest model was selected for the interactive forecasting application based on the evaluation metrics obtained during the project experiments.
+Random Forest performed slightly better and was used in the dashboard. The trained model is saved at `models/enriched_random_forest_model.rds`.
 
-The trained model is stored as:
+## Explainability
 
-```text
-models/enriched_random_forest_model.rds
-```
+The project goes beyond producing a single number. It includes feature importance, prediction error analysis, per-zone performance, a review of the largest errors, and what-if scenarios. Reports and tables are in `outputs/`, and plots are in `plots/`.
 
----
+## Data
 
-## 🔍 Explainability
+The data covers December 2023 to December 2025 at roughly 15-minute intervals across five zones (Zone_A to Zone_E), with about 70,000 observations per zone.
 
-AquaSense is designed as an **explainable forecasting system**, rather than simply producing a prediction.
+To stay within GitHub file-size limits, the deployed app uses a compact version of the dataset, `data/enriched_deployment.csv` (43,665 rows, 51 columns, about 16.65 MB).
 
-The project includes:
+**Note on synthetic features:** Some locality-level variables, such as demographics, infrastructure, and land use, are synthetically generated for experimentation. They show how contextual data can be added to a forecasting system and should not be treated as real measurements for any locality. The dashboard labels these variables as synthetic.
 
-* Feature importance analysis
-* Prediction error analysis
-* Locality-level performance analysis
-* Largest-error investigation
-* What-if scenario analysis
-* Model comparison
-
-Generated reports and analysis tables are stored under:
-
-```text
-outputs/
-```
-
-Generated visual plots are stored separately under:
-
-```text
-plots/
-```
-
----
-
-## 🗂️ Project Structure
+## Project Structure
 
 ```text
 urban-water-demand/
-│
-├── app.R
-├── README.md
-├── requirements.R
-├── .Rprofile
-├── .gitignore
+├── app.R                  # Shiny application
+├── R/pipeline.R           # Data processing and modelling pipeline
+├── requirements.R         # R dependencies
 ├── Dockerfile
-│
-├── data/
-│   ├── enriched_deployment.csv
-│   ├── locality_context.csv
-│   └── soweki_wdd_9.csv
-│
-├── models/
-│   └── enriched_random_forest_model.rds
-│
-├── R/
-│   └── pipeline.R
-│
-├── plots/
-│   ├── water_demand_over_time.png
-│   ├── demand_by_hour.png
-│   ├── demand_by_day_of_week.png
-│   └── demand_distribution.png
-│
-└── outputs/
-    ├── enriched_error_metrics.csv
-    ├── enriched_feature_description.csv
-    ├── enriched_feature_importance.csv
-    ├── enriched_model_comparison.csv
-    ├── explainability_error_analysis_report.txt
-    ├── locality_comparison.csv
-    ├── locality_error_metrics.csv
-    ├── locality_model_performance.csv
-    ├── what_if_scenario_results.csv
-    └── ...
+├── data/                  # Deployment dataset and locality context
+├── models/                # Trained Random Forest model
+├── plots/                 # Generated plots
+└── outputs/               # Metrics, reports, and analysis tables
 ```
 
----
+## Technology Stack
 
-## 🛠️ Technology Stack
+R, Shiny, shinydashboard, Plotly, DT, ggplot2, dplyr, tidyr, caret, Metrics, Docker, Git
 
-| Technology         | Purpose                           |
-| ------------------ | --------------------------------- |
-| **R**              | Data science and machine learning |
-| **Random Forest**  | Demand forecasting                |
-| **Shiny**          | Interactive web application       |
-| **shinydashboard** | Dashboard interface               |
-| **Plotly**         | Interactive visualizations        |
-| **DT**             | Interactive data tables           |
-| **ggplot2**        | Data visualization                |
-| **dplyr / tidyr**  | Data manipulation                 |
-| **caret**          | Machine-learning workflow         |
-| **Metrics**        | Model evaluation                  |
-| **Git / GitHub**   | Version control                   |
-| **Docker**         | Application deployment            |
+## Running Locally
 
----
-
-## ⚙️ Local Installation
-
-### Prerequisites
-
-Install:
-
-* R 4.6.1
-* Git
-* Optional: Docker for containerized deployment
-
-Clone the repository:
+Requirements: R 4.6.1 and Git (Docker is optional).
 
 ```bash
 git clone https://github.com/Parimal1004/urban-water-demand.git
 cd urban-water-demand
+Rscript requirements.R          # install dependencies
+Rscript R/pipeline.R            # optional: rerun the full pipeline
+Rscript -e "options(shiny.autoload.r=FALSE); shiny::runApp('.', port=3850)"
 ```
 
-### Install R dependencies
+Then open http://127.0.0.1:3850. The dashboard only needs `enriched_deployment.csv` and `locality_context.csv`.
 
-From the project directory:
-
-```powershell
-& "C:\Program Files\R\R-4.6.1\bin\Rscript.exe" requirements.R
-```
-
-Run the complete data-processing and modelling pipeline:
-
-```powershell
-& "C:\Program Files\R\R-4.6.1\bin\Rscript.exe" R/pipeline.R
-```
-
-The pipeline creates temporary intermediate datasets in `data/` while it runs.
-The dashboard itself uses only `enriched_deployment.csv` and
-`locality_context.csv`.
-
-### Run AquaSense
-
-```powershell
-& "C:\Program Files\R\R-4.6.1\bin\Rscript.exe" -e "options(shiny.autoload.r=FALSE); shiny::runApp('.', port=3850)"
-```
-
-Then open:
-
-```text
-http://127.0.0.1:3850
-```
-
----
-
-## 🐳 Docker Deployment
-
-The repository includes a Docker configuration for deployment platforms that support Docker-based services.
-
-Build the image:
+## Docker
 
 ```bash
 docker build -t aquasense .
-```
-
-Run the container:
-
-```bash
 docker run -p 10000:10000 -e PORT=10000 aquasense
 ```
 
-The application is configured to listen on:
+The app listens on `0.0.0.0:$PORT`. The live version is deployed on Render from this repository using the Dockerfile.
 
-```text
-0.0.0.0:$PORT
-```
+## Future Work
 
----
+- Live weather and IoT water-meter integration
+- XGBoost / LightGBM comparison and more advanced time-series models
+- SHAP-based local explanations
+- Automated retraining and anomaly detection
+- Real locality infrastructure data to replace the synthetic features
 
-## 🌐 Deployment
+## Author
 
-The project is configured for deployment as a Docker-based web service.
-
-The current deployment workflow uses:
-
-```text
-GitHub
-   ↓
-Dockerfile
-   ↓
-R 4.6.1
-   ↓
-Shiny
-   ↓
-AquaSense Dashboard
-```
-
----
-
-## 📦 Deployment Dataset
-
-The complete enriched dataset is used during the research and model-development pipeline.
-
-Because GitHub has individual-file size constraints, the deployed dashboard uses a compact historical dataset:
-
-```text
-data/enriched_deployment.csv
-```
-
-This deployment dataset contains:
-
-* **43,665 rows**
-* **51 columns**
-* Approximately **16.65 MB**
-
-The full enriched feature dataset is retained separately from the deployed application because of its larger size.
-
----
-
-## ⚠️ Data & Feature Disclosure
-
-The project combines historical SOWEKI-style water-demand data with contextual locality features.
-
-Some locality-level contextual variables are **synthetically generated experimental features**. They are included to demonstrate how demographic, infrastructure, land-use, and environmental context can be incorporated into a forecasting system.
-
-They should **not be interpreted as measured real-world values for individual localities**.
-
-The dashboard explicitly identifies these contextual variables as synthetic experimental features.
-
----
-
-## 📈 Dataset Coverage
-
-The enriched historical dataset covers:
-
-```text
-December 2023 → December 2025
-```
-
-with observations at approximately **15-minute intervals** across five zones:
-
-```text
-Zone_A
-Zone_B
-Zone_C
-Zone_D
-Zone_E
-```
-
-Each zone contains approximately **70,177 observations** in the complete enriched dataset.
-
----
-
-## 🎯 Project Objectives
-
-The main objectives of AquaSense are to:
-
-1. Forecast urban water demand using machine learning.
-2. Engineer meaningful temporal, environmental, infrastructure, and locality features.
-3. Compare traditional regression with ensemble learning.
-4. Analyze model errors and feature importance.
-5. Provide interpretable forecasting results.
-6. Support what-if operational analysis.
-7. Compare demand characteristics across urban zones.
-8. Deliver the complete workflow through an interactive dashboard.
-
----
-
-## 🔮 Future Improvements
-
-Potential future extensions include:
-
-* Real-time IoT water-meter integration
-* Live weather API integration
-* More advanced time-series models
-* XGBoost/LightGBM comparison
-* SHAP-based local explanations
-* Automated model retraining
-* Real-time anomaly detection
-* Water supply optimization
-* Cloud database integration
-* Authentication and role-based access
-* Real-world locality infrastructure data
-
----
-
-## 👨‍💻 Author
-
-**Parimal Goud**
-
-AI & Data Science Undergraduate
-CBIT
-
+Parimal Goud, AI and Data Science undergraduate, CBIT
 GitHub: [@Parimal1004](https://github.com/Parimal1004)
 
----
+## License
 
-## 📄 License
-
-This project is intended for academic, educational, and experimental purposes.
+Intended for academic and educational use.
