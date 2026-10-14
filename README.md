@@ -206,10 +206,16 @@ The project includes:
 * What-if scenario analysis
 * Model comparison
 
-Generated analysis files are stored under:
+Generated reports and analysis tables are stored under:
 
 ```text
 outputs/
+```
+
+Generated visual plots are stored separately under:
+
+```text
+plots/
 ```
 
 ---
@@ -229,24 +235,19 @@ urban-water-demand/
 ├── data/
 │   ├── enriched_deployment.csv
 │   ├── locality_context.csv
-│   ├── soweki_wdd_9.csv
-│   └── urban_water_demand_enriched.csv
+│   └── soweki_wdd_9.csv
 │
 ├── models/
 │   └── enriched_random_forest_model.rds
 │
 ├── R/
-│   ├── 01_data_understanding.R
-│   ├── 02_feature_engineering.R
-│   ├── 03_generate_context_data.R
-│   ├── 04_enriched_feature_engineering.R
-│   ├── 05_enriched_split.R
-│   ├── 06_train_enriched_models.R
-│   ├── 07_compare_original_enriched.R
-│   ├── 08_explainability_error_analysis.R
-│   ├── 09_locality_comparison.R
-│   ├── 10_what_if_analysis.R
-│   └── 11_generate_report.R
+│   └── pipeline.R
+│
+├── plots/
+│   ├── water_demand_over_time.png
+│   ├── demand_by_hour.png
+│   ├── demand_by_day_of_week.png
+│   └── demand_distribution.png
 │
 └── outputs/
     ├── enriched_error_metrics.csv
@@ -306,6 +307,16 @@ From the project directory:
 ```powershell
 & "C:\Program Files\R\R-4.6.1\bin\Rscript.exe" requirements.R
 ```
+
+Run the complete data-processing and modelling pipeline:
+
+```powershell
+& "C:\Program Files\R\R-4.6.1\bin\Rscript.exe" R/pipeline.R
+```
+
+The pipeline creates temporary intermediate datasets in `data/` while it runs.
+The dashboard itself uses only `enriched_deployment.csv` and
+`locality_context.csv`.
 
 ### Run AquaSense
 
